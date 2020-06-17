@@ -9,9 +9,19 @@ class Formatter {
   }
   static titleize (string){
     const  noEffect = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from'];
-    let newString = string.split('').map(word => {
-      noeffect.includes(word) ? word:capitalize(word)).join('')
-    })
-    return  this.capitalize(newString);
+
+return string.split(' ').reduce((a,e,i)=>{
+  if(i===0)
+  return Formatter.capitalize(e);
+
+if(noEffect.includes(e)){
+  a+=' '+e;
+} else {
+  a+= ' '+Formatter.capitalize(e);
+}
+return a;
+},'');
+
+
   }
 }
